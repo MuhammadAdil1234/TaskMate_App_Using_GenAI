@@ -3,10 +3,12 @@ import { View, Text, StyleSheet } from 'react-native';
 import SplashScreen from './src/screens/SplashScreen';
 import FloatingAddButton from './src/components/FloatingAddButton';
 import GradientButton from './src/components/GradientButton';
+import TaskCard from './src/components/TaskCard';
 
 const App = () => {
   // Simple placeholder "navigation" to demonstrate transition after the splash.
   const [showSplash, setShowSplash] = useState(true);
+  const [done, setDone] = useState(false);
 
   if (showSplash) {
     return (
@@ -21,13 +23,13 @@ const App = () => {
   return (
     <View style={styles.container}>
       <View style={styles.main}></View>
-      <GradientButton
-        title="Create Task"
-        onPress={() => {
-          // handle action
-        }}
-        // Optional: override width/placement from parent
-        style={{ marginHorizontal: 24, marginTop: 16 }}
+      <TaskCard
+        title="Design the new homepage"
+        description="Wireframe and mockup in Figma"
+        dueDate="Due: Oct 31"
+        completed={done}
+        onToggle={() => setDone(prev => !prev)}
+        style={{ marginHorizontal: 16, marginVertical: 8 }}
       />
     </View>
   );
