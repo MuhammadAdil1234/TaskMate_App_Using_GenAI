@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import SplashScreen from './src/screens/SplashScreen';
 import FloatingAddButton from './src/components/FloatingAddButton';
+import GradientButton from './src/components/GradientButton';
 
 const App = () => {
   // Simple placeholder "navigation" to demonstrate transition after the splash.
@@ -19,13 +20,15 @@ const App = () => {
   // ⬇️ Replace this section with your actual main navigator/screens.
   return (
     <View style={styles.container}>
-      <View style={styles.main}>
-        <FloatingAddButton
-          onPress={() => {
-            /* open create task modal */
-          }}
-        />
-      </View>
+      <View style={styles.main}></View>
+      <GradientButton
+        title="Create Task"
+        onPress={() => {
+          // handle action
+        }}
+        // Optional: override width/placement from parent
+        style={{ marginHorizontal: 24, marginTop: 16 }}
+      />
     </View>
   );
 };
