@@ -40,7 +40,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({
     <View style={styles.root}>
       {/* Increased green gradient coverage (weight more to bottom) */}
       <LinearGradient
-        colors={[colors.gradientTop, '#00FF4D']} // stronger green tone
+        colors={[colors.BLUE, colors.GREEN]} // stronger green tone
         start={{ x: 0.5, y: 0 }}
         end={{ x: 0.5, y: 1 }}
         style={styles.gradient}
@@ -80,7 +80,7 @@ export default SplashScreen;
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: colors.gradientTop,
+    backgroundColor: colors.BLUE,
   },
   gradient: {
     flex: 1,
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
   appName: {
     fontSize: 40,
     fontWeight: 'semibold',
-    color: colors.white,
+    color: colors.WHITE,
     letterSpacing: 0.5,
   },
   logoImage: {
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   },
   tagline: {
     fontSize: 20,
-    color: colors.whiteMuted,
+    color: colors.WHITEMUTED,
     textAlign: 'center',
   },
   footer: {

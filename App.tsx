@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import SplashScreen from './src/screens/SplashScreen';
+import FloatingAddButton from './src/components/FloatingAddButton';
 
 const App = () => {
   // Simple placeholder "navigation" to demonstrate transition after the splash.
@@ -19,8 +20,11 @@ const App = () => {
   return (
     <View style={styles.container}>
       <View style={styles.main}>
-        <Text style={styles.title}>TaskMate</Text>
-        <Text style={styles.subtitle}>This is your main app screen.</Text>
+        <FloatingAddButton
+          onPress={() => {
+            /* open create task modal */
+          }}
+        />
       </View>
     </View>
   );
@@ -31,7 +35,7 @@ export default App;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0B1220',
+    backgroundColor: 'FFFFFF',
   },
   main: {
     flex: 1,
