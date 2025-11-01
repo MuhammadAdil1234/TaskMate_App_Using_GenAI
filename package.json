@@ -10,7 +10,9 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-community/datetimepicker": "^8.5.0",
     "@react-native/new-app-screen": "0.81.4",
+    "lucide-react-native": "^0.552.0",
     "react": "19.1.0",
     "react-native": "0.81.4",
     "react-native-linear-gradient": "^2.8.3",
@@ -26,6 +28,7 @@
     "@react-native-community/cli-platform-ios": "20.0.0",
     "@react-native/babel-preset": "0.81.4",
     "@react-native/eslint-config": "0.81.4",
+    "@react-native/gradle-plugin": "^0.81.4",
     "@react-native/metro-config": "0.81.4",
     "@react-native/typescript-config": "0.81.4",
     "@types/jest": "^29.5.13",

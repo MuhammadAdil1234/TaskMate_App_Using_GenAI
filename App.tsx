@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import SplashScreen from './src/screens/SplashScreen';
-import FloatingAddButton from './src/components/FloatingAddButton';
-import GradientButton from './src/components/GradientButton';
-import TaskCard from './src/components/TaskCard';
+import DynamicInput from './src/components/DynamicInput';
 
 const App = () => {
   // Simple placeholder "navigation" to demonstrate transition after the splash.
   const [showSplash, setShowSplash] = useState(true);
   const [done, setDone] = useState(false);
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [dueDate, setDueDate] = useState('');
 
   if (showSplash) {
     return (
@@ -23,13 +24,30 @@ const App = () => {
   return (
     <View style={styles.container}>
       <View style={styles.main}></View>
-      <TaskCard
-        title="Design the new homepage"
-        description="Wireframe and mockup in Figma"
-        dueDate="Due: Oct 31"
-        completed={done}
-        onToggle={() => setDone(prev => !prev)}
-        style={{ marginHorizontal: 16, marginVertical: 8 }}
+      <DynamicInput
+        label="Task Title"
+        type="text"
+        placeholder="e.g. Submit assignment"
+        value={title}
+        onChange={setTitle}
+      />
+
+      <DynamicInput
+        label="Description"
+        type="textarea"
+        placeholder="Add more details..."
+        value={description}
+        onChange={setDescription}
+        style={{ marginTop: 16 }}
+      />
+
+      <DynamicInput
+        label="Due Date"
+        type="date"
+        placeholder="Select due date"
+        value={dueDate}
+        onChange={setDueDate}
+        style={{ marginTop: 16 }}
       />
     </View>
   );
