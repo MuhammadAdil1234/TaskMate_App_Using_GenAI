@@ -20,29 +20,22 @@ import SwipeableTaskRow from '../components/SwipeableTaskRow';
 import DynamicInput from '../components/DynamicInput';
 import colors from '../utils/Color';
 
-const COMMIT_DELAY_MS = 1200; // how long the tick stays visible before committing
+const COMMIT_DELAY_MS = 1200;
 
 const HomeScreen: React.FC = () => {
   const navigation = useNavigation<any>();
   const { pendingTasks, addTask, toggleTask, deleteTask } = useTasks();
 
-  // Create task modal form state
   const [modalVisible, setModalVisible] = useState(false);
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
   const [date, setDate] = useState('');
 
-  /**
-   * Optimistic completion:
-   * - optimisticCompleted keeps ids visually "completed" before real commit
-   * - timers map stores the pending commit timeout for each id
-   */
   const [optimisticCompleted, setOptimisticCompleted] = useState<Set<string>>(
     new Set(),
   );
   const timersRef = useRef<Record<string, ReturnType<typeof setTimeout>>>({});
 
-  // Header with clock icon → Completed screen
   useLayoutEffect(() => {
     navigation.setOptions({
       title: 'TaskMate',
@@ -67,32 +60,44 @@ const HomeScreen: React.FC = () => {
     setModalVisible(true);
   }, []);
 
+  /** Validate and save a new task */
   const saveTask = useCallback(() => {
     if (!title.trim()) {
       Alert.alert('Title required', 'Please enter a task title.');
       return;
     }
+
+    if (!date) {
+      Alert.alert('Due date required', 'Please select a due date.');
+      return;
+    }
+
+    // Parse and validate that date is not in the past
+    const selected = new Date(date);
+    const now = new Date();
+    selected.setHours(0, 0, 0, 0);
+    now.setHours(0, 0, 0, 0);
+
+    if (selected < now) {
+      Alert.alert('Invalid due date', 'Due date cannot be in the past.');
+      return;
+    }
+
     addTask({
       title: title.trim(),
       description: desc.trim() || undefined,
-      dueDate: date || undefined,
+      dueDate: date,
       completed: false,
     });
     setModalVisible(false);
   }, [title, desc, date, addTask]);
 
-  /**
-   * Handle checkbox tap with optimistic UI + per-item commit timers.
-   * - First tap: show tick immediately, start timer to commit.
-   * - Second tap within the window: cancel timer and un-tick (stay pending).
-   */
+  /** Optimistic toggle handler (shows tick immediately, commits after delay) */
   const handleToggleOptimistic = useCallback(
     (task: { id: string; completed: boolean }) => {
       const id = task.id;
 
-      // If this task is already in optimistic state, cancel it (un-tick).
       if (optimisticCompleted.has(id)) {
-        // Clear the pending timer and revert UI
         const t = timersRef.current[id];
         if (t) {
           clearTimeout(t);
@@ -106,19 +111,15 @@ const HomeScreen: React.FC = () => {
         return;
       }
 
-      // If it's already completed in data (edge case), treat as normal toggle
       if (task.completed) {
         toggleTask(id);
         return;
       }
 
-      // Otherwise: mark optimistic & start commit timer
       setOptimisticCompleted(prev => new Set(prev).add(id));
 
       timersRef.current[id] = setTimeout(() => {
-        // Commit the state to the store (this moves it to Completed list)
         toggleTask(id);
-        // Clean local tracking
         setOptimisticCompleted(prev => {
           const next = new Set(prev);
           next.delete(id);
@@ -131,7 +132,6 @@ const HomeScreen: React.FC = () => {
   );
 
   const renderItem = ({ item }: { item: any }) => {
-    // Show the tick if either backend says completed OR optimistic flag is set
     const showCompleted = item.completed || optimisticCompleted.has(item.id);
 
     return (
@@ -157,7 +157,6 @@ const HomeScreen: React.FC = () => {
         data={pendingTasks}
         keyExtractor={item => item.id}
         renderItem={renderItem}
-        // Rerender when optimistic set changes so ticks reflect immediately
         extraData={optimisticCompleted}
         ListEmptyComponent={
           <View style={styles.empty}>
@@ -167,10 +166,8 @@ const HomeScreen: React.FC = () => {
         }
       />
 
-      {/* Floating + button → open create task modal */}
       <FloatingAddButton onPress={openCreate} />
 
-      {/* Create Task Modal (bottom sheet style) */}
       <Modal
         transparent
         animationType="slide"
@@ -233,13 +230,9 @@ const styles = StyleSheet.create({
   listContent: { padding: 16, paddingBottom: 120 },
   listItem: { paddingVertical: 6 },
   card: { flex: 1 },
-
-  // Empty state
   empty: { alignItems: 'center', marginTop: 48 },
   emptyTitle: { color: '#111827', fontSize: 16, fontWeight: '700' },
   emptySub: { color: '#6B7280', marginTop: 6 },
-
-  // Modal sheet
   modalBackdrop: {
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.45)',
@@ -264,8 +257,6 @@ const styles = StyleSheet.create({
   field: { marginTop: 12 },
   cancelBtn: { alignSelf: 'center', marginTop: 10, padding: 8 },
   cancelText: { color: 'rgba(255,255,255,0.85)', fontSize: 15 },
-
-  // Platform shadows for any future buttons, if needed
   shadow: {
     ...Platform.select({
       ios: {
