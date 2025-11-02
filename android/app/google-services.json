@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "537455549597",
+    "project_id": "taskmate-app-using-genai",
+    "storage_bucket": "taskmate-app-using-genai.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:537455549597:android:c8c6c0d4e9fb6d87590874",
+        "android_client_info": {
+          "package_name": "com.taskmate_app_using_genai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSnQRui6G3WxouN-qBWUD5nHUilSZaHmc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
