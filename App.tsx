@@ -1,14 +1,16 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import RootNavigator from './src/navigation/RootNavigator';
-import { TasksProvider } from './src/context/TaskContext';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import AppNavigator from './src/navigation/AppNavigator';
+import { TaskProvider } from './src/context/TaskContext';
 
-const App = () => (
-  <TasksProvider>
-    <NavigationContainer>
-      <RootNavigator />
-    </NavigationContainer>
-  </TasksProvider>
-);
+const App = () => {
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <TaskProvider>
+        <AppNavigator />
+      </TaskProvider>
+    </GestureHandlerRootView>
+  );
+};
 
 export default App;
