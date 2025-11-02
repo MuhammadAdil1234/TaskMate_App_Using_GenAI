@@ -8,3 +8,8 @@ export type MainTabParamList = {
   Tasks: undefined;
   Settings: undefined;
 };
+
+export type HomeStackParamList = {
+  Home: undefined;
+  Completed: undefined;
+};

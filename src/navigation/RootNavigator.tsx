@@ -1,8 +1,12 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import type { RootStackParamList } from './types';
-import SplashScreen from '../screens/SplashScreen'; // uses your existing SplashScreen
+import SplashScreen from '../screens/SplashScreen';
 import MainTabNavigator from './MainTabNavigator';
+
+export type RootStackParamList = {
+  Splash: undefined;
+  MainTabs: undefined;
+};
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -20,15 +24,10 @@ const RootNavigator = () => {
 
 export default RootNavigator;
 
-/**
- * This wrapper lets us reuse your existing SplashScreen component
- * that calls an `onFinish` prop after a delay/animation.
- */
 const SplashEntry = ({ navigation }: any) => {
   return (
     <SplashScreen
       onFinish={() => {
-        // Replace the stack so the user cannot go back to Splash
         navigation.reset({
           index: 0,
           routes: [{ name: 'MainTabs' }],

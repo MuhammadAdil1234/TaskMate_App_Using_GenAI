@@ -1,19 +1,14 @@
 import React from 'react';
-import {
-  NavigationContainer,
-  DefaultTheme,
-  DarkTheme,
-} from '@react-navigation/native';
-import { useColorScheme } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import RootNavigator from './src/navigation/RootNavigator';
+import { TasksProvider } from './src/context/TaskContext';
 
-const App = () => {
-  const scheme = useColorScheme();
-  return (
-    <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme}>
+const App = () => (
+  <TasksProvider>
+    <NavigationContainer>
       <RootNavigator />
     </NavigationContainer>
-  );
-};
+  </TasksProvider>
+);
 
 export default App;

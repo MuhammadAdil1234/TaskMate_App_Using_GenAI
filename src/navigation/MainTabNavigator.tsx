@@ -1,9 +1,9 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Text } from 'react-native';
 import type { MainTabParamList } from './types';
 
-import { Text } from 'react-native';
-import HomeScreen from '../screens/HomeScreen';
+import HomeStackNavigator from './HomeStackNavigator';
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
 
@@ -11,14 +11,14 @@ const MainTabNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        headerTitleStyle: { fontWeight: '700' },
+        headerShown: false,
         tabBarStyle: { height: 58 },
         tabBarLabelStyle: { fontSize: 12, marginBottom: 6 },
       }}
     >
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
+        component={HomeStackNavigator}
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => <Text style={{ color }}>🏠</Text>,
