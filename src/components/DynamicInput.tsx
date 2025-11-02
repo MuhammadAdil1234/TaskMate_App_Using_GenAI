@@ -10,7 +10,8 @@ import {
 } from 'react-native';
 import { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { Calendar } from 'lucide-react-native'; // ✅ modern icon source
+import { Calendar } from 'lucide-react-native';
+import colors from '../utils/Color';
 
 export interface SmartInputProps {
   label: string;
@@ -159,16 +160,16 @@ const RADIUS = 12;
 const styles = StyleSheet.create({
   label: {
     fontSize: 13,
-    color: '#6B7280',
+    color: colors.GREY,
     marginBottom: 6,
   },
   fieldBox: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.WHITE,
     borderRadius: RADIUS,
     paddingHorizontal: 14,
     ...Platform.select({
       ios: {
-        shadowColor: '#000',
+        shadowColor: colors.BLACK,
         shadowOpacity: 0.08,
         shadowOffset: { width: 0, height: 3 },
         shadowRadius: 6,
@@ -188,7 +189,7 @@ const styles = StyleSheet.create({
   },
   input: {
     fontSize: 16,
-    color: '#0F172A',
+    color: colors.DRAKGREY,
   },
   singleline: {
     height: 44,
@@ -197,11 +198,11 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   placeholder: {
-    color: '#9CA3AF',
+    color: colors.GREY,
     fontSize: 16,
   },
   dateValue: {
-    color: '#0F172A',
+    color: colors.DRAKGREY,
     fontWeight: '600',
   },
   dateText: {
@@ -223,11 +224,11 @@ const styles = StyleSheet.create({
   },
   modalBackdrop: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.35)',
+    backgroundColor: colors.BLACK,
     justifyContent: 'flex-end',
   },
   modalSheet: {
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.WHITE,
     borderTopLeftRadius: 16,
     borderTopRightRadius: 16,
   },
@@ -237,10 +238,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
     paddingVertical: 10,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: '#E5E7EB',
+    borderBottomColor: colors.WHITE,
   },
   modalCancel: {
-    color: '#6B7280',
+    color: colors.GREY,
     fontSize: 16,
   },
   modalDone: {

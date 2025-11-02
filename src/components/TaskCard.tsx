@@ -114,28 +114,17 @@ const TaskCard: React.FC<TaskCardProps> = ({
 
 export default memo(TaskCard);
 
-const RADIUS = 12;
+const RADIUS = 10;
 const CHECKBOX_SIZE = 24;
 
 const styles = StyleSheet.create({
   card: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: colors.WHITE,
+    backgroundColor: '#FBFBFB',
     borderRadius: RADIUS,
     paddingHorizontal: 14,
     paddingVertical: 12,
-    ...Platform.select({
-      ios: {
-        shadowColor: '#000',
-        shadowOpacity: 0.08,
-        shadowOffset: { width: 0, height: 3 },
-        shadowRadius: 6,
-      },
-      android: {
-        elevation: 2,
-      },
-    }),
   },
   checkboxBase: {
     width: CHECKBOX_SIZE,
@@ -150,7 +139,7 @@ const styles = StyleSheet.create({
     height: CHECKBOX_SIZE,
     borderRadius: CHECKBOX_SIZE / 2,
     borderWidth: 2,
-    borderColor: '#CBD5E1', // gray border
+    borderColor: colors.LIGHTGREY,
   },
   checkboxGradient: {
     width: CHECKBOX_SIZE,
@@ -164,17 +153,17 @@ const styles = StyleSheet.create({
     minWidth: 0,
   },
   title: {
-    color: '#0F172A',
+    color: colors.BLACK,
     fontSize: 16,
     fontWeight: '700',
   },
   titleCompleted: {
     textDecorationLine: 'line-through',
-    color: '#64748B',
+    color: colors.GREY,
   },
   description: {
     marginTop: 2,
-    color: '#94A3B8',
+    color: colors.GREY,
     fontSize: 13,
   },
   meta: {
@@ -183,7 +172,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   dueDate: {
-    color: '#94A3B8',
+    color: colors.GREY,
     fontSize: 12,
   },
 });
