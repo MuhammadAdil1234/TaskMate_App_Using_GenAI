@@ -1,6 +1,6 @@
+// at project root
 module.exports = {
-  presets: ['module:metro-react-native-babel-preset'], // ✅ correct preset for RN
-
+  presets: ['@react-native/babel-preset'], // ✅ correct for RN 0.81.x
   plugins: [
     ['module-resolver', {
       root: ['./src'],

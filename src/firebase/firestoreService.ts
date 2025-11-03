@@ -3,7 +3,7 @@ import firestore, { FirebaseFirestoreTypes } from '@react-native-firebase/firest
 export type TaskDoc = {
   title: string;
   description?: string;
-  dueDate?: string;               // formatted user string
+  dueDate?: string;               
   completed: boolean;
   createdAt: FirebaseFirestoreTypes.Timestamp | null;
 };
