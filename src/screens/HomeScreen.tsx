@@ -68,10 +68,15 @@ const HomeScreen: React.FC = () => {
       Alert.alert('Title required', 'Please enter a task title.');
       return;
     }
+    if (!desc) {
+      Alert.alert('Description Required', 'Please Enter the description');
+      return;
+    }
     if (!date) {
       Alert.alert('Due date required', 'Please select a due date.');
       return;
     }
+
     const selected = new Date(date);
     const today = new Date();
     selected.setHours(0, 0, 0, 0);
