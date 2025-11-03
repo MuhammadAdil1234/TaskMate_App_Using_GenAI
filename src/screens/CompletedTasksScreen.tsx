@@ -7,7 +7,6 @@ import {
   FlatList,
   Alert,
 } from 'react-native';
-
 import { useTasks } from '../context/TaskContext';
 import TaskCard from '../components/TaskCard';
 import colors from '../utils/Color';
@@ -21,8 +20,7 @@ const CompletedTasksScreen: React.FC = () => {
         title={item.title}
         description={item.description}
         dueDate={item.dueDate}
-        completed={true} // always completed here
-        // View-only: prevent reversing from this screen
+        completed={true}
         onToggle={() =>
           Alert.alert('View only', 'Completed tasks cannot be modified here.')
         }
@@ -33,7 +31,6 @@ const CompletedTasksScreen: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.root}>
-      {/* Header summary */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Completed Tasks</Text>
         <Text style={styles.headerCount}>{completedTasks.length}</Text>
@@ -66,12 +63,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  headerTitle: {
-    flex: 1,
-    color: '#111827',
-    fontSize: 18,
-    fontWeight: '700',
-  },
+  headerTitle: { flex: 1, color: '#111827', fontSize: 18, fontWeight: '700' },
   headerCount: {
     minWidth: 28,
     textAlign: 'center',
@@ -87,7 +79,6 @@ const styles = StyleSheet.create({
   listItem: { paddingVertical: 6 },
   card: { flex: 1 },
 
-  // Empty state
   empty: { alignItems: 'center', marginTop: 48 },
   emptyTitle: { color: '#111827', fontSize: 16, fontWeight: '700' },
   emptySub: { color: '#6B7280', marginTop: 6 },
