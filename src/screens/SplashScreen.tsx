@@ -61,12 +61,13 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ visibleForMs = 1000 }) => {
           >
             {/* Row: App name with logo on the right */}
             <View style={styles.titleRow}>
-              <Text style={styles.appName}>TaskMate</Text>
+
               <Image
                 source={require('../assets/images/logo.png')}
                 style={styles.logoImage}
                 resizeMode="contain"
               />
+              <Text style={styles.appName}>TaskMate</Text>
             </View>
 
             <Text style={styles.tagline}>Organize your day with ease.</Text>
@@ -113,8 +114,8 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   logoImage: {
-    width: 52,
-    height: 52,
+    width: 51,
+    height: 51,
   },
   tagline: {
     fontSize: 20,

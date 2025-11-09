@@ -33,9 +33,12 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({
   const [tasks, setTasks] = useState<Task[]>([]);
 
   useEffect(() => {
-    const unsub = listenToTasks(setTasks);
-    return () => unsub();
-  }, []);
+  let unsubscribe: any;
+  (async () => {
+    unsubscribe = await listenToTasks(setTasks);
+  })();
+  return () => unsubscribe && unsubscribe();
+}, []);
 
   const addTask = useCallback(async (t: Omit<TaskDoc, 'createdAt'>) => {
     const id = await addTaskDoc(t);

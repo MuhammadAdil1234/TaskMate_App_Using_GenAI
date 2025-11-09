@@ -37,10 +37,19 @@ const HomeScreen: React.FC = () => {
     new Set(),
   );
   const timersRef = useRef<Record<string, ReturnType<typeof setTimeout>>>({});
+  const HeaderTitle = () => (
+  <View style={{ paddingLeft: 12 }}>
+    <Text style={{ fontSize: 22, fontWeight: '500' }}>TaskMate</Text>
+  </View>
+);
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: 'TaskMate',
+        headerTitle: () => <HeaderTitle />, // 👈 replace default text
+    headerTitleAlign: 'left',
+       headerTitleStyle: {
+         left: Platform.OS === 'android' ? 12 : 8,
+    },
       headerRight: () => (
         <Pressable
           onPress={() => navigation.navigate('Completed')}
@@ -62,36 +71,30 @@ const HomeScreen: React.FC = () => {
     setModalVisible(true);
   }, []);
 
+
+
   // Validate + save to Firestore
   const saveTask = useCallback(async () => {
     if (!title.trim()) {
       Alert.alert('Title required', 'Please enter a task title.');
       return;
     }
-    if (!desc) {
-      Alert.alert('Description Required', 'Please Enter the description');
-      return;
-    }
+    // if (!desc) {
+    //   Alert.alert('Description Required', 'Please Enter the description');
+    //   return;
+    // }
     if (!date) {
       Alert.alert('Due date required', 'Please select a due date.');
       return;
     }
-
-    const selected = new Date(date);
-    const today = new Date();
-    selected.setHours(0, 0, 0, 0);
-    today.setHours(0, 0, 0, 0);
-    if (selected < today) {
-      Alert.alert('Invalid due date', 'Due date cannot be in the past.');
-      return;
-    }
+   
 
     try {
       // Log before call so we know we reached here
       console.log('[saveTask] creating...', { title, desc, date });
       await addTask({
         title: title.trim(),
-        description: desc.trim() || undefined,
+        description: desc.trim(),
         dueDate: date,
         completed: false,
       });

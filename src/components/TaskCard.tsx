@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   titleCompleted: {
-    textDecorationLine: 'line-through',
+    // textDecorationLine: 'line-through',
     color: colors.GREY,
   },
   description: {
