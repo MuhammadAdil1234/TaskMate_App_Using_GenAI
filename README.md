@@ -1,97 +1,101 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+**TaskMate – AI-Assisted Task Management App**
 
-# Getting Started
+TaskMate is a mobile productivity application developed using Generative AI tools to demonstrate how AI can support the software development lifecycle.
+It combines AI-assisted code generation, automated UI ideation, and human-in-the-loop refinement to build an intuitive and ethical task management system.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+**Features**
 
-## Step 1: Start Metro
+✅ Task Management: Add, complete, see history and delete tasks.
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+🔁 History Tracking: View completed tasks and progress history.
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+🎨 AI-Generated UI Design: Initial UI prototypes created with Galileo AI and refined in Figma.
 
-```sh
-# Using npm
-npm start
+🤖 AI-Assisted Development: Code components generated and optimized using ChatGPT and GitHub Copilot.
 
-# OR using Yarn
-yarn start
-```
+🔥 Firebase Integration: Real-time database for task storage and synchronization.
 
-## Step 2: Build and run your app
+🌐 Multi-Screen Navigation: React Navigation used to build modular, scalable navigation.
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+🧑‍💻 Human-in-the-Loop Workflow: Every AI-generated artifact manually reviewed, debugged, and ethically verified.
 
-### Android
+**Tech Stack**
 
-```sh
-# Using npm
-npm run android
+Frontend	-> React Native (v0.81.4)
+Backend	-> Firebase Realtime Database
+Design	-> Galileo AI + Figma
+AI Tools	-> ChatGPT, GitHub Copilot
+IDE	-> Visual Studio Code
+Language -> JavaScript / JSX
 
-# OR using Yarn
-yarn android
-```
+**TaskMate_App_Using_GenAI/**
+│
+├── src/
+│   ├── components/        # Reusable UI components (Buttons, Inputs, etc.)
+│   ├── screens/           # Splash, Home, History, Settings
+│   ├── navigation/        # Navigation between screens
+│   ├── utils/             # Helper functions, Firebase config
+    ├── assets/            # images
+    ├── firebase/          # firebase functionality for data storage
+│
+├── App.js                 # Main application entry
+├── package.json           # Project metadata and dependencies
+└── README.md              # Project documentation
 
-### iOS
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+**⚙️ Installation**
+Prerequisites
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+Node.js
 
-```sh
-bundle install
-```
+npm
 
-Then, and every time you update your native dependencies, run:
+React Native CLI
 
-```sh
-bundle exec pod install
-```
+Android Studio for running the application
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+# Clone the repository
+git clone https://github.com/MuhammadAdil1234/TaskMate_App_Using_GenAI.git
 
-```sh
-# Using npm
-npm run ios
+# Navigate into the project directory
+cd TaskMate_App_Using_GenAI
 
-# OR using Yarn
-yarn ios
-```
+# Install dependencies
+npm install
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+# Start Metro bundler
+npx react-native start
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+# Run on Android emulator or connected device
+npx react-native run-android
 
-## Step 3: Modify your app
+**Generative AI Was Used**
 
-Now that you have successfully run the app, let's make changes!
+This project explored AI as a co-developer:
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+ChatGPT and GitHub Copilot generated components and logic, code suggestions and guidance.
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+Galileo AI generated early-stage UI mock-ups from text prompts.
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+Human refinement: Every AI output was reviewed, debugged, and ethically verified.
 
-## Congratulations! :tada:
+The development process was documented through prompt logs (DP00–DP13) and evaluated through a System Usability Scale (SUS) achieving a score of 85.8 (Excellent).
 
-You've successfully run and modified your React Native App. :partying_face:
 
-### Now what?
+**Evaluation Summary**
+Metric	Result
+AI Contribution	94.6 % of codebase
+SUS Score	85.8 (Excellent)
+Participants	5 users (task testing + SUS survey)
+Findings	AI accelerated development and design, but required human validation.
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
 
-# Troubleshooting
+**Author**
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+Muhammad Adil
+MSc Artificial Intelligence and Data Science – Keele University
+📧 muhammadadil0994@gmail.com
 
-# Learn More
+if you face any difficulty to run this project and need any further infromation please contact me on above email address.
 
-To learn more about React Native, take a look at the following resources:
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
