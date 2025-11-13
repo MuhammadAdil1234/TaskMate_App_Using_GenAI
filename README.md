@@ -31,16 +31,26 @@ Language -> JavaScript / JSX
 **TaskMate_App_Using_GenAI/**
 │
 ├── src/
+
 │   ├── components/        # Reusable UI components (Buttons, Inputs, etc.)
+
 │   ├── screens/           # Splash, Home, History, Settings
+
 │   ├── navigation/        # Navigation between screens
+
 │   ├── utils/             # Helper functions, Firebase config
+
     ├── assets/            # images
+    
     ├── firebase/          # firebase functionality for data storage
+    
 │
 ├── App.js                 # Main application entry
+
 ├── package.json           # Project metadata and dependencies
+
 └── README.md              # Project documentation
+
 
 
 **⚙️ Installation**
