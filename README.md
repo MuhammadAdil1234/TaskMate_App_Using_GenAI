@@ -93,11 +93,14 @@ The development process was documented through prompt logs (DP00–DP13) and eva
 
 
 **Evaluation Summary**
-Metric	Result
-AI Contribution	94.6 % of codebase
-SUS Score	85.8 (Excellent)
+AI Contribution	82.1 % of codebase
+
+SUS Score	94.6 (Excellent)
+
 Participants	5 users (task testing + SUS survey)
-Findings	AI accelerated development and design, but required human validation.
+
+Findings -> AI accelerated development and design, but required human validation.
+
 
 
 **Author**
